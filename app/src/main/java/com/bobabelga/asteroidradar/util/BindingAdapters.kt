@@ -12,7 +12,6 @@ fun bindImageOfDay(imageView: ImageView, url: String) {
      Picasso.get().load(url).placeholder(R.drawable.placeholder_picture_of_day)
          .into(imageView)
 }
-
 @BindingAdapter("statusIcon")
 fun ImageView.bindAsteroidStatusImage(asteroid: AsteroidEntity?) {
     asteroid?.let {
@@ -39,8 +38,10 @@ fun TextView.bindSetcloseApproachDate(asteroid: AsteroidEntity?) {
 fun bindDetailsStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.asteroid_hazardous)
+        imageView.contentDescription = imageView.context.getString(R.string.potentially_hazardous_asteroid_image)
     } else {
         imageView.setImageResource(R.drawable.asteroid_safe)
+        imageView.contentDescription = imageView.context.getString(R.string.not_hazardous_asteroid_image)
     }
 }
 
